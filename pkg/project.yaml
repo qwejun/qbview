@@ -1,0 +1,43 @@
+spec_version: "2.1"
+app_id: com.wbj.nas.qb
+version: 1.0.3
+support_arch:
+  - amd64
+product_series:
+  - nasync
+supports:
+  - app
+  - pc
+start_cmd: bin/qbview
+port: 21012
+# 这个值是正则片段，会写进 config.json 的 runtimeEnvironment.proxy[0].location，
+# UGOS 再拼成 nginx 的 location ~ ^/<value>/ 。
+# "api|" 展开后是 ^/api|/ ，PCRE 下等价于 (^/api)|(/) —— 任何 URI 都含斜杠，
+# 于是全部请求都落到本应用。本应用自己托管前端和 API，必须这样全量接管。
+proxy_path: "api|"
+open_type: inner
+tag_types:
+  - utility
+depend_fw_version: 1.13.0.0000
+only_admin: false
+allow_add_access_path: false
+support_migration: false
+permissions:
+  - NETWORK.ACCESS_INTERNET
+i18n:
+  en-US:
+    name: qBittorrent
+    description: Minimal qBittorrent task panel for desktop and mobile. The window and a responsive web UI share one Go binary; it talks to qBittorrent's Web API on 127.0.0.1:8899.
+    author: Local build
+    official: https://github.com/qbittorrent/qBittorrent
+    help: https://github.com/qbittorrent/qBittorrent/wiki/WebUI-API-(qBittorrent-4.1)
+    publisher: Local build
+    publisher_link: https://github.com/qbittorrent/qBittorrent
+  zh-CN:
+    name: qBittorrent
+    description: qBittorrent 任务面板，桌面窗口与手机页面共用同一份界面。只看进度、暂停、删除，不搬原版 WebUI 那套复杂操作。
+    author: 本机构建
+    official: https://github.com/qbittorrent/qBittorrent
+    help: https://github.com/qbittorrent/qBittorrent/wiki/WebUI-API-(qBittorrent-4.1)
+    publisher: 本机构建
+    publisher_link: https://github.com/qbittorrent/qBittorrent

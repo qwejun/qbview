@@ -1,0 +1,18 @@
+# UPK 打包中间产物
+pkg/build_dir/
+
+# 编译出来的二进制（由 make/build 命令生成，不入库）
+pkg/rootfs_amd64/bin/qbview
+qbview.exe
+*.exe
+*.upk
+
+# 测试临时目录与日志
+runtest/shots/
+runtest/edgeprofile/
+runtest/data*/
+runtest/*.log
+
+# Python
+__pycache__/
+*.pyc
